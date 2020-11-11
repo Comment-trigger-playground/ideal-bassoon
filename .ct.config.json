@@ -1,0 +1,54 @@
+{
+    "mainteners": [
+        "karelhala",
+        "Comment-trigger-playground/some-team"
+    ],
+    "rules": {
+        "github": [{
+            "events": [{
+                "type": "pull_request",
+                "actions": ["closed", "labeled"],
+                "is_merged": true,
+                "conditions": [{
+                    "type": "labels",
+                    "contains": ["minor", "major", "bugfix"],
+                    "notContains": ["released"]
+                }]
+            }, {
+                "type": "issue_comment",
+                "actions": ["edited", "created"],
+                "conditions": [
+                    {
+                        "type": "message",
+                        "contains": ["@ct-octobot release minor", "@ct-octobot release major", "@ct-octobot release bugfix"]
+                    },
+                    {
+                        "type": "pull_request.closed",
+                        "is_merged": true
+                    }
+                ]
+            }],
+            "actions": [{
+                "is_manual": true,
+                "type": "push",
+                "branch": "main",
+                "to": [{
+                    "type": "branch",
+                    "value": "prod-beta",
+                    "force": true
+                }, {
+                    "type": "tag",
+                    "value": "v?.x"
+                }]
+            }, {
+                "type": "comment",
+                "value": "This PR triggered a new release of main to prod-beta and created new tag.",
+                "context": "pull_request"
+            }, {
+                "type": "comment",
+                "value": "This PR triggered a new release of main to prod-beta and created new tag.",
+                "context": "fixed_issue"
+            }]
+        }]
+    }
+}
