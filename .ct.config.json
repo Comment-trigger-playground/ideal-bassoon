@@ -8,11 +8,13 @@
             "events": [{
                 "type": "pull_request",
                 "actions": ["closed", "labeled"],
-                "is_merged": true,
                 "conditions": [{
                     "type": "labels",
                     "contains": ["minor", "major", "bugfix"],
                     "notContains": ["released"]
+                }, {
+                    "type": "isMerged",
+                    "contains": [true]
                 }]
             }, {
                 "type": "issue_comment",
@@ -21,25 +23,24 @@
                     {
                         "type": "message",
                         "contains": ["@ct-octobot release minor", "@ct-octobot release major", "@ct-octobot release bugfix"]
-                    },
-                    {
-                        "type": "pull_request.closed",
-                        "is_merged": true
+                    }, {
+                        "type": "isMerged",
+                        "contains": [true]
                     }
                 ]
             }],
             "actions": [{
                 "is_manual": true,
                 "type": "push",
-                "branch": "main",
-                "to": [{
-                    "type": "branch",
-                    "value": "prod-beta",
-                    "force": true
-                }, {
-                    "type": "tag",
-                    "value": "v?.x"
-                }]
+                "context": "main",
+                "value": [{
+                        "type": "branch",
+                        "value": "prod-beta",
+                        "isForce": true
+                    }, {
+                        "type": "tag",
+                        "value": "v?.x"
+                    }]
             }, {
                 "type": "comment",
                 "value": "This PR triggered a new release of main to prod-beta and created new tag.",
