@@ -39,7 +39,7 @@
                         "isForce": true
                     }, {
                         "type": "tag",
-                        "value": "v?.x"
+                        "value": "minor"
                     }]
             }, {
                 "type": "comment",
