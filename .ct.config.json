@@ -50,6 +50,24 @@
                 "value": "This PR triggered a new release of main to prod-beta and created new tag.",
                 "context": "fixed_issue"
             }]
+        }, {
+            "events": [{
+                "type": "issue_comment",
+                "actions": ["edited", "created"],
+                "conditions": [
+                    {
+                        "type": "comment.body",
+                        "contains": ["@ct-octobot release minor", "@ct-octobot release major", "@ct-octobot release bugfix", "/@ct-octobot magic number [0-9]+/g"]
+                    }
+                ]
+            }],
+            "actions": [
+                {
+                    "type": "comment",
+                    "value": "You comment was successfull, here is my comment!",
+                    "context": "pull_request"
+                }
+            ]
         }]
     }
 }
