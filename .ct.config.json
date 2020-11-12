@@ -9,11 +9,11 @@
                 "type": "pull_request",
                 "actions": ["closed", "labeled"],
                 "conditions": [{
-                    "type": "labels",
+                    "type": "pull_request.labels",
                     "contains": ["minor", "major", "bugfix"],
                     "notContains": ["released"]
                 }, {
-                    "type": "isMerged",
+                    "type": "pull_request.merged",
                     "contains": [true]
                 }]
             }, {
@@ -21,10 +21,10 @@
                 "actions": ["edited", "created"],
                 "conditions": [
                     {
-                        "type": "message",
+                        "type": "comment.body",
                         "contains": ["@ct-octobot release minor", "@ct-octobot release major", "@ct-octobot release bugfix"]
                     }, {
-                        "type": "isMerged",
+                        "type": "pull_request.merged",
                         "contains": [true]
                     }
                 ]
