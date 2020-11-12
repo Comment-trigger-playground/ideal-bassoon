@@ -57,7 +57,7 @@
                 "conditions": [
                     {
                         "type": "comment.body",
-                        "contains": ["@ct-octobot release minor", "@ct-octobot release major", "@ct-octobot release bugfix", "/@ct-octobot magic number [0-9]+/g"]
+                        "contains": ["@ct-octobot release minor", "@ct-octobot release major", "@ct-octobot release bugfix", "@ct-octobot magic number [0-9]+"]
                     }
                 ]
             }],
