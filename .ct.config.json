@@ -45,10 +45,6 @@
                 "type": "comment",
                 "value": "This PR triggered a new release of main to prod-beta and created new tag.",
                 "context": "pull_request"
-            }, {
-                "type": "comment",
-                "value": "This PR triggered a new release of main to prod-beta and created new tag.",
-                "context": "fixed_issue"
             }]
         }, {
             "events": [{
